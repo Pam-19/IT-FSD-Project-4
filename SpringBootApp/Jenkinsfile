@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+              
+                git 'https://github.com/Pam-19/IT-FSD-Project-4.git'
+            }
+        }
+        stage('Test') {
+            steps {
+            
+                sh 'mvn clean test'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+           
+                sh 'docker build -t anupamhari31/anupam .'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker login -u anupamhari31 -p kfgjbp%?MvY_B_7'
+                sh 'docker push anupamhari31/anupam'
+            }
+        }
+    }
+}
