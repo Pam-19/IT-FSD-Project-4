@@ -32,12 +32,11 @@ public class MainController {
     }
 
     @GetMapping("/warning")
-    public String Warining(){
+    public String Warning(){
         LocalDateTime localDateTime = LocalDateTime.now();
         log.warn("Warning page was rendered at " + localDateTime);
         return "This is the warning page";
     }
-
 
     @GetMapping("/err")
     public String Error(){
@@ -45,6 +44,5 @@ public class MainController {
         log.error("Error Page was rendered at " + localDateTime);
         return "This is the error page";
     }
-
 
 }
